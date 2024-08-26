@@ -50,8 +50,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.nowni.sports.R
-import com.nowni.sports.data.LocalSportsDataProvider
-import com.nowni.sports.data.LocalSportsDataProvider.defaultSport
 import com.nowni.sports.model.Sport
 import com.nowni.sports.ui.theme.SportsTheme
 
@@ -300,6 +298,7 @@ private fun SportsDetail(
         }
     }
 }
+
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
