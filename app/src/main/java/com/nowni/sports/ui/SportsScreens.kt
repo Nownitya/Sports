@@ -257,14 +257,16 @@ private fun SportsDetail(
     contentPadding: PaddingValues,
     modifier: Modifier = Modifier
 ) {
+    val scrollStateCompact = rememberScrollState()
+    val layoutDirection = LocalLayoutDirection.current
+
     BackHandler {
         onBackPressed()
     }
-    val scrollState = rememberScrollState()
-    val layoutDirection = LocalLayoutDirection.current
+
     Box(
         modifier = modifier
-            .verticalScroll(state = scrollState)
+            .verticalScroll(state = scrollStateCompact)
             .padding(top = contentPadding.calculateTopPadding())
     ) {
         Column(
@@ -340,6 +342,8 @@ private fun SportsListAndDetail(
     modifier: Modifier = Modifier,
     contentPadding: PaddingValues = PaddingValues(0.dp)
 ) {
+    val listScrollState = rememberScrollState()
+    val detailScrollState = rememberScrollState()
     Row(
         modifier = modifier
     ) {
@@ -352,6 +356,7 @@ private fun SportsListAndDetail(
             modifier = Modifier
                 .weight(2f)
                 .padding(horizontal = dimensionResource(R.dimen.padding_medium))
+                .verticalScroll(listScrollState)
         )
         SportsDetail(
             selectedSport = selectedSport,
@@ -359,7 +364,9 @@ private fun SportsListAndDetail(
             contentPadding = PaddingValues(
                 top = contentPadding.calculateTopPadding()
             ),
-            modifier = Modifier.weight(3f)
+            modifier = Modifier
+                .weight(3f)
+                .verticalScroll(detailScrollState)
         )
     }
 }
