@@ -105,7 +105,11 @@ fun SportsTheme(
     if (!view.isInEditMode) {
         SideEffect {
 
-            setUpEdgeToEdge(view,darkTheme)
+            val window = (view.context as Activity).window
+            window.statusBarColor = colorScheme.primary.toArgb()
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
+
+//            setUpEdgeToEdge(view,darkTheme)
         }
     }
 
@@ -150,8 +154,4 @@ fun setUpEdgeToEdge(view: View, darkTheme: Boolean) {
 
 
 
-/*
-            val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.primary.toArgb()
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
-            */
+
